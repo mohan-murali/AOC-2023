@@ -9,7 +9,10 @@ import (
 )
 
 func main()  {
-	// sum := 0
+	task1()
+}
+
+func task1(){
 	dat, err := os.Open("./data/day1-1.txt")
 	check(err)
 
