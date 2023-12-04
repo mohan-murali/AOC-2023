@@ -62,7 +62,9 @@ func task2(){
 						firstIndex = index
 						firstVal = v
 					}
+				}
 
+				if index := strings.LastIndex(line, k); index >=0 {
 					if(index > lastIndex){
 						lastIndex = index
 						secondVal = v
