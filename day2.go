@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -13,7 +15,16 @@ var green = 13
 var blue = 14
 
 func day2_task1(){
-	lines := ReadFileToStringArray("./data/day2-1.txt")
+
+	fileReader, err := os.Open("./data/day2-1.txt")
+	check(err)
+
+	fileScanner := bufio.NewScanner(fileReader)
+	fileScanner.Split(bufio.ScanLines)
+	var lines []string
+	for fileScanner.Scan(){
+		lines = append(lines, fileScanner.Text())
+	}
 
 	//Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
 	for _, line := range lines {

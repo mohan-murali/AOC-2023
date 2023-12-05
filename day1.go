@@ -10,10 +10,6 @@ import (
 	"unicode"
 )
 
-func main()  {
-	// task1()
-	task2()
-}
 
 func task2(){
 	fileReader, err := os.Open("./data/day1-2.txt")
