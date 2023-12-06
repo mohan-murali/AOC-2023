@@ -42,12 +42,10 @@ func isCubesValid(game string) bool{
 	cubes := strings.Split(game, ",")
 
 	for _, cube := range cubes {
-
 		cubeInfo := strings.Split(cube, " ")
 		n, color := cubeInfo[1], cubeInfo[2]
 		number, err := strconv.Atoi(n)
 		check(err)
-		fmt.Println(cubes)
 		switch color {
 		case "green":
 			if number > green {
@@ -63,6 +61,51 @@ func isCubesValid(game string) bool{
 			}
 		}
 	}
-
 	return true
+}
+
+func day2_task2(){
+	lines:= readFileToStringArray("./data/day2-1.txt")
+	result:= 0
+
+	for _, line := range lines {
+		gameInfo := strings.Split(line, ":")
+		playedGames := gameInfo[1]
+		games := strings.Split(playedGames, ";")
+		records := make(map[string] int)
+		for _, game := range games {
+			cubes := strings.Split(game, ",")
+
+			for _, cube := range cubes {
+				cubeInfo := strings.Split(cube, " ")
+				n, color := cubeInfo[1], cubeInfo[2]
+				number, err := strconv.Atoi(n)
+				check(err)
+
+				value, exists := records[color]
+
+				if exists {
+					if number > value {
+						records[color] = number
+					}
+				} else {
+					records[color] = number
+				}
+				fmt.Println(records)
+			}
+		}
+
+		power := 1
+
+		for key, value := range records {
+			fmt.Println(key, value)
+			power = power * value
+		}
+
+		fmt.Println(power)
+
+		result = result + power
+	}
+
+	fmt.Println(result)
 }

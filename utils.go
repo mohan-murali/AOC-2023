@@ -2,12 +2,10 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 )
 
 func readFileToStringArray(path string) [] string{
-	fmt.Print(path)
 	fileReader, err := os.Open(path)
 	check(err)
 
