@@ -91,18 +91,14 @@ func day2_task2(){
 				} else {
 					records[color] = number
 				}
-				fmt.Println(records)
 			}
 		}
 
 		power := 1
-
 		for key, value := range records {
 			fmt.Println(key, value)
 			power = power * value
 		}
-
-		fmt.Println(power)
 
 		result = result + power
 	}
