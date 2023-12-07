@@ -31,8 +31,6 @@ func day3_task1(){
 				digitStarted = false
 				right = j
 
-				fmt.Println(right, line, num)
-
 				if left > 0 {
 					sym := string(line[left-1])
 					if !unicode.IsDigit(rune(line[left-1])) && sym != "."{
@@ -42,7 +40,6 @@ func day3_task1(){
 
 				if !isValidNumber && right < len(line)-1 {
 					sym := string(line[right])
-					fmt.Println("this is the right string ", sym)
 					if !unicode.IsDigit(rune(line[right])) && sym != "."{
 						isValidNumber = true
 					}
