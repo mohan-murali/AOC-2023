@@ -19,7 +19,6 @@ func day3_task1(){
 			if unicode.IsDigit(char){
 				if !digitStarted {
 					left = j
-					fmt.Println("digit started and left is ", left)
 				}
 				digitStarted = true
 				number += string(char)
@@ -32,15 +31,18 @@ func day3_task1(){
 				digitStarted = false
 				right = j
 
-				fmt.Println("the left is ", left)
+				fmt.Println(right, line, num)
 
 				if left > 0 {
 					sym := string(line[left-1])
 					if !unicode.IsDigit(rune(line[left-1])) && sym != "."{
 						isValidNumber = true
 					}
-				} else if right < len(line)-1 {
+				}
+
+				if !isValidNumber && right < len(line)-1 {
 					sym := string(line[right])
+					fmt.Println("this is the right string ", sym)
 					if !unicode.IsDigit(rune(line[right])) && sym != "."{
 						isValidNumber = true
 					}
@@ -83,7 +85,6 @@ func day3_task1(){
 					} else {
 						rightMost = len(line) -1
 					}
-					fmt.Println(leftMost, rightMost)
 
 					for l:= leftMost; l <= rightMost; l++{
 						sym := string(nextLine[l])
