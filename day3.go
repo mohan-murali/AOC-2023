@@ -36,9 +36,8 @@ func day3_task1(){
 						isValidNumber = true
 					}
 				} else if right < len(line)-1 {
-					sym := string(line[right + 1])
-					fmt.Println(sym)
-					if !unicode.IsDigit(rune(line[right + 1])) && sym != "."{
+					sym := string(line[right])
+					if !unicode.IsDigit(rune(line[right])) && sym != "."{
 						isValidNumber = true
 					}
 				}
@@ -76,7 +75,7 @@ func day3_task1(){
 					}
 
 					if right < len(line) -1 {
-						rightMost = right +1
+						rightMost = right
 					} else {
 						rightMost = right
 					}
