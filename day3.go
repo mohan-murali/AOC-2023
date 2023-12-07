@@ -12,12 +12,14 @@ func day3_task1(){
 	for i, line := range lines {
 		number := ""
 		digitStarted := false
+		left, right := 0, 0
 		for j, char := range line {
-			left, right, isValidNumber := 0, 0, false
+			 isValidNumber := false
 
 			if unicode.IsDigit(char){
 				if !digitStarted {
 					left = j
+					fmt.Println("digit started and left is ", left)
 				}
 				digitStarted = true
 				number += string(char)
@@ -29,6 +31,8 @@ func day3_task1(){
 				number = ""
 				digitStarted = false
 				right = j
+
+				fmt.Println("the left is ", left)
 
 				if left > 0 {
 					sym := string(line[left-1])
@@ -52,14 +56,14 @@ func day3_task1(){
 					}
 
 					if right < len(line) -1 {
-						rightMost = right +1
-					} else {
 						rightMost = right
+					} else {
+						rightMost = len(line) -1
 					}
 
-					for l:= leftMost; l < rightMost; l++{
+					for l:= leftMost; l <= rightMost; l++{
 						sym := string(prevLine[l])
-							if !unicode.IsDigit(rune(prevLine[l])) && sym != "."{
+						if !unicode.IsDigit(rune(prevLine[l])) && sym != "."{
 							isValidNumber = true
 						}
 					}
@@ -77,12 +81,13 @@ func day3_task1(){
 					if right < len(line) -1 {
 						rightMost = right
 					} else {
-						rightMost = right
+						rightMost = len(line) -1
 					}
+					fmt.Println(leftMost, rightMost)
 
-					for l:= leftMost; l < rightMost; l++{
+					for l:= leftMost; l <= rightMost; l++{
 						sym := string(nextLine[l])
-							if !unicode.IsDigit(rune(nextLine[l])) && sym != "."{
+						if !unicode.IsDigit(rune(nextLine[l])) && sym != "."{
 							isValidNumber = true
 						}
 					}
