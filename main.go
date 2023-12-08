@@ -5,5 +5,6 @@ func main(){
 	// task2()
 	// day2_task1()
 	// day2_task2()
-	day3_task1()
+	// day3_task1()
+	day4_task1()
 }
