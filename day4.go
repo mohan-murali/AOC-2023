@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -16,25 +17,30 @@ func day4_task1(){
 		lucky, numbers := strings.TrimSpace(gameNumbers[0]), strings.TrimSpace(gameNumbers[1])
 		luck := strings.Split(lucky, " ")
 		curr := strings.Split(numbers, " ")
-		luckyNumbers := make(map[string] bool)
+		luckyNumbers := make(map[int] bool)
 		for _, num:= range luck{
-			luckyNumbers[num]=false
+			number, err := strconv.Atoi(num)
+			if(err == nil){
+				luckyNumbers[number]=false
+			}
 		}
+		fmt.Println(luck, curr)
 		numbersExist:=false
 		power :=1
 		for _, num:= range curr {
-			_, exists := luckyNumbers[num]
-			if exists {
-				luckyNumbers[num] = true
-				if numbersExist {
-					power *=2
+			number, err:= strconv.Atoi(num)
+			if(err == nil){
+				_, exists := luckyNumbers[number]
+				if exists {
+					luckyNumbers[number] = true
+					if numbersExist {
+						power *=2
+					}
+					numbersExist = true
+					fmt.Println(number)
 				}
-				numbersExist = true
-
 			}
 		}
-
-		fmt.Println(power, sum)
 
 		if numbersExist {
 			sum += power
