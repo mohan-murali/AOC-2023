@@ -7,7 +7,12 @@ import (
 )
 
 func day4_task2(){
-
+	lines:= readFileToStringArray("./data/day4.txt")
+	for _, line:= range lines {
+		game:= strings.Split(line, ":")
+		gameId, gameNumbers := strings.Split(game[0], " ")[1], strings.Split(game[1], "|")
+		fmt.Println(gameId, gameNumbers)
+	}
 }
 
 func day4_task1(){
