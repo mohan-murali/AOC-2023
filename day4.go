@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+func day4_task2(){
+
+}
+
 func day4_task1(){
 	lines := readFileToStringArray("./data/day4.txt")
 	sum:=0
