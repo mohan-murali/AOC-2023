@@ -46,7 +46,7 @@ func day4_task2(){
 							scartchId ++
 							givenGames[scartchId] = givenGames[scartchId] + num
 						}
-				}
+					}
 				}
 			}
 		}
