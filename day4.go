@@ -13,16 +13,15 @@ func day4_task2(){
 		game:= strings.Split(line, ":")
 		gameId := strings.Split(game[0], " ")[1]
 		id,err := strconv.Atoi(gameId)
-		check(err)
-		givenGames[id] = 1
+		if err == nil {
+			givenGames[id] = 1
+		}
 	}
 
 	for _, line:= range lines {
 		game:= strings.Split(line, ":")
 		gameNumbers := strings.Split(game[1], "|")
 		gameId := strings.Split(game[0], " ")[1]
-		id,err := strconv.Atoi(gameId)
-		check(err)
 		lucky, numbers := strings.TrimSpace(gameNumbers[0]), strings.TrimSpace(gameNumbers[1])
 		luck := strings.Split(lucky, " ")
 		curr := strings.Split(numbers, " ")
@@ -33,19 +32,22 @@ func day4_task2(){
 				luckyNumbers[number]=false
 			}
 		}
-		scartchId := id
-		for _, num:= range curr {
-			number, err:= strconv.Atoi(num)
-			if(err == nil){
-				_, exists := luckyNumbers[number]
-				if exists {
-					luckyNumbers[number] = true
-					num, present := givenGames[id]
-					if present {
-						scartchId ++
-						givenGames[scartchId] = givenGames[scartchId] + num
-					}
-			}
+		id,err := strconv.Atoi(gameId)
+		if err == nil {
+			scartchId := id
+			for _, num:= range curr {
+				number, err:= strconv.Atoi(num)
+				if(err == nil){
+					_, exists := luckyNumbers[number]
+					if exists {
+						luckyNumbers[number] = true
+						num, present := givenGames[id]
+						if present {
+							scartchId ++
+							givenGames[scartchId] = givenGames[scartchId] + num
+						}
+				}
+				}
 			}
 		}
 	}
