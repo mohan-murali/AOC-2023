@@ -49,7 +49,6 @@ func day4_task2(){
 
 	sum:= 0
 
-	fmt.Println(givenGames)
 	for _, game := range givenGames {
 		fmt.Println(game)
 	}
