@@ -40,9 +40,12 @@ func day4_task2(){
 				_, exists := luckyNumbers[number]
 				if exists {
 					luckyNumbers[number] = true
-					scartchId ++
-					givenGames[scartchId] = givenGames[scartchId] + 1
-				}
+					num, present := givenGames[id]
+					if present {
+						scartchId ++
+						givenGames[scartchId] = givenGames[scartchId] + num
+					}
+			}
 			}
 		}
 	}
@@ -50,7 +53,7 @@ func day4_task2(){
 	sum:= 0
 
 	for _, game := range givenGames {
-		fmt.Println(game)
+		sum += game
 	}
 
 	fmt.Println(sum)
